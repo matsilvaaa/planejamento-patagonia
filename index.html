@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4ec">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Patagônia">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <title>Patagônia · El Calafate + Ushuaia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper:    #f7f4ec;
+      --paper-2:  #fdfbf6;
+      --ink:      #1a1c1a;
+      --ink-2:    #4a4d48;
+      --ink-3:    #7c7e77;
+      --line:     #ddd8c8;
+      --line-2:   #ebe7da;
+      --teal:     #1f5560;
+      --teal-2:   #2e7280;
+      --teal-bg:  #e4eded;
+      --amber:    #9a5b27;
+      --amber-bg: #f3e7d8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      background: var(--paper);
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    body {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 15px; line-height: 1.5; color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+    .wrap {
+      max-width: 760px; margin: 0 auto;
+      padding: 44px 0 calc(64px + env(safe-area-inset-bottom));
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 30px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute; right: -80px; top: -80px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(31,85,96,.07), transparent 70%);
+    }
+    .eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: clamp(34px, 7vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -.025em;
+      color: var(--ink);
+    }
+    header h1 em { font-style: italic; color: var(--teal); font-weight: 400; }
+    .header-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 26px;
+      border-top: 1px solid var(--line-2);
+      padding-top: 20px;
+      position: relative;
+    }
+    .header-meta .m { padding-right: 14px; }
+    .header-meta .m + .m { border-left: 1px solid var(--line-2); padding-left: 18px; }
+    .header-meta .k {
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px;
+    }
+    .header-meta .v {
+      font-family: 'Fraunces', serif;
+      font-size: 19px; font-weight: 500; color: var(--ink);
+      letter-spacing: -.01em; line-height: 1.15;
+    }
+    .header-meta .v small {
+      display: block;
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 12px; font-weight: 500; color: var(--ink-3);
+      margin-top: 2px; letter-spacing: 0;
+    }
+
+    @media (max-width: 600px) {
+      .header-meta { grid-template-columns: 1fr 1fr; gap: 18px 0; }
+      .header-meta .m:nth-child(3) { border-left: none; padding-left: 0; }
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .sec-title {
+      font-family: 'Fraunces', serif;
+      font-size: 14px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--ink-3);
+      margin: 44px 0 4px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .sec-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--line);
+    }
+    .sec-note {
+      font-size: 12.5px; color: var(--ink-3); font-style: italic;
+      margin: 2px 0 8px;
+    }
+
+    /* ===== LEG (city group) ===== */
+    .leg {
+      position: relative;
+      padding-left: 26px;
+      margin-top: 26px;
+    }
+    .leg::before {
+      content: '';
+      position: absolute; left: 0; top: 8px; bottom: 14px;
+      width: 4px; border-radius: 4px;
+      background: var(--teal);
+    }
+    .leg.ush::before { background: var(--amber); }
+
+    .leg-head {
+      display: flex; align-items: baseline; gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .leg-head .city {
+      font-family: 'Fraunces', serif;
+      font-size: 25px; font-weight: 600; letter-spacing: -.02em;
+      color: var(--ink);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .leg-head .city .dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--teal);
+    }
+    .leg.ush .leg-head .city .dot { background: var(--amber); }
+    .leg-head .range {
+      margin-left: auto;
+      font-size: 13px; font-weight: 600; color: var(--ink-3);
+      letter-spacing: .01em;
+    }
+    .leg-head .range b { color: var(--teal); font-weight: 700; }
+    .leg.ush .leg-head .range b { color: var(--amber); }
+
+    /* ===== DAYS ===== */
+    .day {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line-2);
+    }
+    .leg .day:last-child { border-bottom: none; }
+    .day .date { text-align: center; padding-top: 2px; }
+    .day .date .dnum {
+      font-family: 'Fraunces', serif;
+      font-size: 24px; font-weight: 600; color: var(--ink);
+      line-height: 1; letter-spacing: -.02em;
+    }
+    .day .date .dwk {
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--ink-3); margin-top: 3px;
+    }
+    .day .body { min-width: 0; }
+    .day-move { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
+    .move {
+      display: inline-block;
+      font-size: 11px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 2px 9px; border-radius: 5px;
+    }
+    .move.in  { background: var(--teal-bg); color: var(--teal); }
+    .move.out { background: var(--amber-bg); color: var(--amber); }
+    .leg.ush .move.in { background: var(--amber-bg); color: var(--amber); }
+    .day .plan {
+      font-size: 14.5px; color: var(--ink-2); line-height: 1.5;
+    }
+    .day .plan b { color: var(--ink); font-weight: 600; }
+
+    /* ===== TOUR ===== */
+    .tour {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 9px;
+      margin-top: 11px;
+    }
+    .tour:first-child { margin-top: 2px; }
+    .tour .marker {
+      color: var(--teal); font-weight: 700;
+      font-size: 14px; line-height: 1.45;
+    }
+    .leg.ush .tour .marker { color: var(--amber); }
+    .tour .marker.star { color: var(--amber); font-size: 13px; }
+    .leg.ush .tour .marker.star { color: var(--amber); }
+    .tour .ttl {
+      display: flex; align-items: baseline; gap: 10px;
+      font-size: 14.5px; color: var(--ink);
+    }
+    .tour .ttl .nm { min-width: 0; flex: 1; }
+    .tour .ttl b { font-weight: 700; }
+    .tour .ttl .meta { color: var(--ink-3); font-size: 13px; font-weight: 500; white-space: nowrap; }
+    .tour .ttl .price {
+      margin-left: auto; flex-shrink: 0;
+      font-weight: 700; color: var(--teal); font-size: 13px;
+      white-space: nowrap; font-variant-numeric: tabular-nums;
+    }
+    .leg.ush .tour .ttl .price { color: var(--amber); }
+    .tour .ttl .price.free { color: var(--ink-3); font-style: italic; font-weight: 600; }
+    .tour .dsc {
+      font-size: 13.5px; color: var(--ink-2); line-height: 1.45;
+      margin-top: 2px;
+    }
+    .tour .buy {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 6px;
+      font-size: 12px; font-weight: 600; letter-spacing: .02em;
+      color: var(--teal); text-decoration: none;
+      padding: 3px 10px 3px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper-2);
+      transition: all .15s;
+    }
+    .tour .buy:hover { border-color: var(--teal); background: var(--teal-bg); }
+    .leg.ush .tour .buy { color: var(--amber); }
+    .leg.ush .tour .buy:hover { border-color: var(--amber); background: var(--amber-bg); }
+    .tour .buy svg { width: 11px; height: 11px; }
+    .day .free {
+      font-size: 13px; color: var(--ink-3); font-style: italic;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .leg-head .range { margin-left: 0; flex-basis: 100%; }
+    }
+
+    /* ===== COST TABLE ===== */
+    table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+    th {
+      text-align: left;
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--ink-3);
+      padding: 8px 0; border-bottom: 1.5px solid var(--line);
+    }
+    th.r { text-align: right; }
+    td {
+      padding: 11px 0; border-bottom: 1px solid var(--line-2);
+      vertical-align: top;
+    }
+    td .item { font-weight: 600; color: var(--ink); font-size: 14.5px; }
+    td .note { font-size: 12.5px; color: var(--ink-3); margin-top: 1px; }
+    td.val {
+      text-align: right; white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+      font-weight: 600; color: var(--ink-2); font-size: 14px;
+    }
+    td.val.points {
+      color: var(--teal); font-weight: 700;
+      font-size: 12.5px; letter-spacing: .02em;
+    }
+    tr.total td {
+      border-bottom: none; border-top: 2px solid var(--ink);
+      padding-top: 14px;
+    }
+    tr.total .item {
+      font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600;
+      color: var(--teal);
+    }
+    tr.total td.val {
+      font-family: 'Fraunces', serif; font-size: 19px;
+      font-weight: 600; color: var(--ink);
+    }
+    tr.total td.val .pp {
+      display: block;
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 12.5px; font-weight: 600; color: var(--teal);
+      margin-top: 4px; letter-spacing: .01em;
+    }
+    .cost-foot {
+      font-size: 12.5px; color: var(--ink-3); font-style: italic;
+      margin-top: 12px; line-height: 1.5;
+    }
+
+    footer {
+      text-align: center; margin-top: 40px;
+      font-size: 12px; color: var(--ink-3);
+      letter-spacing: .04em;
+    }
+
+    /* ===== INTRO ===== */
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    header, .sec-title, .leg, .cost-card { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+    .sec-title { animation-delay: .05s; }
+    .leg.ush { animation-delay: .1s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+
+    /* ===== MOBILE (iPhone 14 / 15) ===== */
+    @media (max-width: 480px) {
+      body { font-size: 15.5px; }
+      .wrap { padding-top: 30px; }
+
+      header { padding: 24px 22px; border-radius: 14px; }
+      .eyebrow { font-size: 11px; margin-bottom: 10px; }
+      header h1 { font-size: 36px; line-height: 1.05; }
+      .header-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 0;
+        margin-top: 20px; padding-top: 18px;
+      }
+      .header-meta .m { padding-right: 10px; }
+      .header-meta .m:nth-child(2n+1) { border-left: none; padding-left: 0; }
+      .header-meta .m:nth-child(2n) { border-left: 1px solid var(--line-2); padding-left: 16px; }
+
+      .sec-title { margin-top: 34px; }
+
+      .leg { padding-left: 20px; margin-top: 22px; }
+      .leg::before { width: 4px; }
+      .leg-head .city { font-size: 23px; }
+      .leg-head .range { font-size: 12.5px; }
+
+      .day { grid-template-columns: 46px 1fr; gap: 13px; padding: 14px 0; }
+      .day .date .dnum { font-size: 22px; }
+      .day .plan { font-size: 14.5px; }
+
+      .tour { grid-template-columns: 15px 1fr; gap: 8px; }
+      .tour .ttl { gap: 8px; }
+      .tour .ttl .price { font-size: 13px; }
+      .tour .dsc { font-size: 13.5px; }
+      /* botão de compra com alvo de toque confortável */
+      .tour .buy {
+        margin-top: 8px;
+        padding: 7px 14px;
+        font-size: 12.5px;
+        min-height: 34px;
+      }
+
+      .day-move .move { font-size: 11px; padding: 3px 9px; }
+
+      table { display: block; }
+      thead, tbody, tr { display: block; }
+      thead { display: none; }
+      td { display: block; border-bottom: none; padding: 0; }
+      tbody tr {
+        display: flex; align-items: baseline; justify-content: space-between;
+        gap: 14px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line-2);
+      }
+      td.val { padding-top: 1px; }
+      tbody tr.total {
+        flex-direction: column; align-items: stretch; gap: 6px;
+        margin-top: 6px; padding-top: 14px;
+        border-top: 2px solid var(--ink); border-bottom: none;
+      }
+      tr.total td.val { text-align: left; }
+      tr.total td.val .pp { margin-top: 2px; }
+
+      footer { margin-top: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ===== HEADER ===== -->
+    <header>
+      <div class="eyebrow">Patagônia Argentina</div>
+      <h1>El Calafate <em>&amp;</em> Ushuaia</h1>
+      <div class="header-meta">
+        <div class="m">
+          <div class="k">Quando</div>
+          <div class="v">17 — 26 nov<small>2026</small></div>
+        </div>
+        <div class="m">
+          <div class="k">Duração</div>
+          <div class="v">10 dias<small>9 noites</small></div>
+        </div>
+        <div class="m">
+          <div class="k">Cidades</div>
+          <div class="v">2<small>El Calafate · Ushuaia</small></div>
+        </div>
+        <div class="m">
+          <div class="k">Pessoas</div>
+          <div class="v">2<small>adultos</small></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== DIA A DIA ===== -->
+    <div class="sec-title">Dia a dia</div>
+    <p class="sec-note">Valores médios para o casal (2 pessoas), já considerando a cobrança em dólar para estrangeiros — referência junho/2026, sujeitos a câmbio.</p>
+
+    <!-- ===== EL CALAFATE ===== -->
+    <div class="leg">
+      <div class="leg-head">
+        <div class="city"><span class="dot"></span>El Calafate</div>
+        <div class="range">17 – 21 nov · <b>5 noites</b></div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">17</div><div class="dwk">Seg</div></div>
+        <div class="body">
+          <div class="day-move"><span class="move in">Chegada</span></div>
+          <div class="plan">Voo <b>GRU → El Calafate</b> (via Buenos Aires). Check-in no hotel e primeira volta pelo centrinho.</div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">18</div><div class="dwk">Ter</div></div>
+        <div class="body">
+          <div class="tour">
+            <span class="marker">→</span>
+            <div>
+              <div class="ttl"><span class="nm"><b>Glaciarium</b> <span class="meta">· meio-dia</span></span><span class="price">R$ 140</span></div>
+              <div class="dsc">Museu interativo sobre os glaciares da Patagônia — bom aquecimento antes de ver o Perito Moreno de perto.</div>
+              <a class="buy" href="https://glaciarium.com" target="_blank" rel="noopener">glaciarium.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+            </div>
+          </div>
+          <div class="free">Tarde livre: centrinho, câmbio e jantar.</div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">19</div><div class="dwk">Qua</div></div>
+        <div class="body">
+          <div class="tour">
+            <span class="marker star">★</span>
+            <div>
+              <div class="ttl"><span class="nm"><b>Perito Moreno — Passarelas</b> <span class="meta">· dia inteiro</span></span><span class="price">R$ 550</span></div>
+              <div class="dsc">Rede de passarelas de frente para o paredão de gelo de quase 5 km do glaciar mais famoso da Argentina. Inclui ingresso do parque + transfer.</div>
+              <a class="buy" href="https://www.losglaciares.com" target="_blank" rel="noopener">losglaciares.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">20</div><div class="dwk">Qui</div></div>
+        <div class="body">
+          <div class="tour">
+            <span class="marker star">★</span>
+            <div>
+              <div class="ttl"><span class="nm"><b>Mini Trekking no glaciar</b> <span class="meta">· dia inteiro</span></span><span class="price">R$ 4.500</span></div>
+              <div class="dsc">Caminhada com crampons sobre o gelo do Perito Moreno, acompanhada de guia. Termina com um whisky com gelo do próprio glaciar.</div>
+              <a class="buy" href="https://hieloyaventura.com" target="_blank" rel="noopener">hieloyaventura.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">21</div><div class="dwk">Sex</div></div>
+        <div class="body">
+          <div class="tour">
+            <span class="marker">→</span>
+            <div>
+              <div class="ttl"><span class="nm"><b>El Chaltén</b> — bate-volta <span class="meta">· dia inteiro</span></span><span class="price">R$ 750</span></div>
+              <div class="dsc">Vila do trekking ao pé do Monte Fitz Roy (~3 h de carro). Trilhas a mirantes e lagunas, com vista do maciço mais icônico da Patagônia.</div>
+              <a class="buy" href="https://www.elchalten.com" target="_blank" rel="noopener">elchalten.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+            </div>
+          </div>
+          <div class="free">Alternativa mais tranquila: Navegação no Lago Argentino.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== USHUAIA ===== -->
+    <div class="leg ush">
+      <div class="leg-head">
+        <div class="city"><span class="dot"></span>Ushuaia</div>
+        <div class="range">22 – 25 nov · <b>4 noites</b></div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">22</div><div class="dwk">Sáb</div></div>
+        <div class="body">
+          <div class="day-move"><span class="move out">Saída El Calafate</span><span class="move in">Chegada Ushuaia</span></div>
+          <div class="plan">Voo <b>El Calafate → Ushuaia</b> às 15:30 (direto, 1h20).</div>
+          <div class="free">Tarde livre em Ushuaia para descansar e conhecer o centro.</div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">23</div><div class="dwk">Dom</div></div>
+        <div class="body">
+          <div class="tour">
+            <span class="marker star">★</span>
+            <div>
+              <div class="ttl"><span class="nm"><b>Canal de Beagle</b> — cruzeiro <span class="meta">· meio-dia</span></span><span class="price">R$ 1.800</span></div>
+              <div class="dsc">Navegação pelo canal que separa Argentina e Chile, com colônias de lobos-marinhos, pinguins e o farol Les Eclaireurs (o "farol do fim do mundo").</div>
+              <a class="buy" href="https://www.triptofin.com.ar" target="_blank" rel="noopener">triptofin.com.ar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">24</div><div class="dwk">Seg</div></div>
+        <div class="body">
+          <div class="tour">
+            <span class="marker">→</span>
+            <div>
+              <div class="ttl"><span class="nm"><b>Trem do Fim do Mundo</b> <span class="meta">· meio-dia</span></span><span class="price">R$ 700</span></div>
+              <div class="dsc">Ferrovia histórica que entra no Parque Nacional pela antiga linha usada pelos presos do presídio de Ushuaia.</div>
+              <a class="buy" href="https://www.trendelfindelmundo.com.ar" target="_blank" rel="noopener">trendelfindelmundo.com.ar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+            </div>
+          </div>
+          <div class="tour">
+            <span class="marker">→</span>
+            <div>
+              <div class="ttl"><span class="nm"><b>PN Tierra del Fuego</b> <span class="meta">· combinado com o trem</span></span><span class="price">R$ 450</span></div>
+              <div class="dsc">Parque mais ao sul do mundo: trilhas costeiras, a baía de Lapataia e o marco final da Ruta 3.</div>
+              <a class="buy" href="https://www.tierradelfuego.org.ar/parque-nacional" target="_blank" rel="noopener">tierradelfuego.org.ar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">25</div><div class="dwk">Ter</div></div>
+        <div class="body">
+          <div class="tour">
+            <span class="marker">→</span>
+            <div>
+              <div class="ttl"><span class="nm"><b>Laguna Esmeralda</b> — trilha <span class="meta">· dia inteiro · 10 km</span></span><span class="price free">Grátis</span></div>
+              <div class="dsc">Trilha por floresta e turfeiras até uma laguna glacial de água verde-esmeralda. Acesso gratuito; guia/transfer opcional (~R$ 250 – 300 o casal). Terreno lamacento — levar botas impermeáveis.</div>
+              <a class="buy" href="https://www.patagonia-argentina.com/ushuaia/laguna-esmeralda/" target="_blank" rel="noopener">como chegar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">26</div><div class="dwk">Qua</div></div>
+        <div class="body">
+          <div class="day-move"><span class="move out">Saída</span></div>
+          <div class="plan">Voo <b>Ushuaia → GRU</b> às 10:20 (via Buenos Aires). Volta pra casa.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ESTIMATIVA DE GASTOS ===== -->
+    <div class="sec-title">Estimativa de gastos</div>
+
+    <div class="cost-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="r">Estimativa · 2 pessoas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="item">Passagens aéreas</div><div class="note">3 trechos · R$ 4.900 por pessoa</div></td>
+            <td class="val">R$ 9.800</td>
+          </tr>
+          <tr>
+            <td><div class="item">Hotel El Calafate</div><div class="note">5 noites</div></td>
+            <td class="val points">Pontos AAdvantage</td>
+          </tr>
+          <tr>
+            <td><div class="item">Hotel Ushuaia</div><div class="note">4 noites</div></td>
+            <td class="val points">Pontos AAdvantage</td>
+          </tr>
+          <tr>
+            <td><div class="item">Passeios e ingressos</div><div class="note">Soma dos passeios do roteiro acima</div></td>
+            <td class="val">R$ 8.890</td>
+          </tr>
+          <tr>
+            <td><div class="item">Alimentação</div><div class="note">10 dias · ~R$ 50–65/dia por pessoa</div></td>
+            <td class="val">R$ 1.000 – 1.300</td>
+          </tr>
+          <tr>
+            <td><div class="item">Transporte local</div><div class="note">Transfers, remises, bate-volta El Chaltén</div></td>
+            <td class="val">R$ 600 – 900</td>
+          </tr>
+          <tr class="total">
+            <td><div class="item">Total estimado</div><div class="note">Hospedagem nos pontos · sem seguro (já temos pelo cartão)</div></td>
+            <td class="val">R$ 20.300 – 20.900<span class="pp">≈ R$ 10.150 – 10.450 por pessoa</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="cost-foot">Os dois hotéis serão pagos com pontos AAdvantage, então ficam fora do desembolso em dinheiro. Seguro viagem já coberto pelo cartão. Passeios em valores médios de junho/2026 (estrangeiro paga em dólar) — o Mini Trekking, sozinho, é metade do custo de passeios; sem ele o total cai para ~R$ 16 mil.</p>
+    </div>
+
+    <footer>Patagônia 2026 · El Calafate + Ushuaia</footer>
+
+  </div>
+</body>
+</html>

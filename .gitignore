@@ -1,0 +1,32 @@
+# Somente o index.html (plano principal) vai pro remoto.
+
+# Monitor de passagens (agente Node.js)
+monitor-passagens/
+agente-passagens-spec.md
+node_modules/
+package*.json
+*.log
+
+# Credenciais e config local
+.env
+.env.*
+*.key
+*.pem
+config.local.*
+
+# Variantes / rascunhos do plano
+planejamento-viagem.html
+planejamento-sem-vla.html
+planejamento-interativo.html
+trip-ushuaia-patagonia.html
+trip-patagonia-buenos-aires.html
+
+# Specs e docs internos
+docs/
+*.md
+!README.md
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
