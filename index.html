@@ -204,6 +204,22 @@
       font-style: italic; font-weight: 600; color: var(--ink-3);
     }
 
+    /* ===== LEG COST BREAKDOWN ===== */
+    .leg-cost {
+      font-size: 12px; line-height: 1.65;
+      color: var(--ink-3);
+      margin: 7px 0 2px;
+    }
+    /* cada item é indivisível: a quebra só acontece nos separadores */
+    .leg-cost .it { white-space: nowrap; }
+    .leg-cost b {
+      color: var(--ink-2); font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+    .leg-cost .pts { color: var(--teal); font-weight: 600; }
+    .leg.ba  .leg-cost .pts { color: var(--ba); }
+    .leg.ush .leg-cost .pts { color: var(--amber); }
+
     /* ===== DAYS ===== */
     .day {
       display: grid;
@@ -469,14 +485,15 @@
 
     <!-- ===== DIA A DIA ===== -->
     <div class="sec-title">Dia a dia</div>
-    <p class="sec-note">Valores médios para o casal (2 pessoas), já considerando a cobrança em dólar para estrangeiros — referência junho/2026, sujeitos a câmbio.</p>
+    <p class="sec-note">Valores médios para o casal (2 pessoas), já considerando a cobrança em dólar para estrangeiros — referência junho/2026, sujeitos a câmbio. O custo de cada cidade soma passeios + alimentação + transporte local (esses dois rateados por dia). Hotéis saem nos pontos, e os voos entram só no total geral por ligarem as cidades.</p>
 
     <!-- ===== BUENOS AIRES ===== -->
     <div class="leg ba">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>Buenos Aires</div>
-        <div class="range">17 – 19 nov · <b>2 noites</b> · <i class="none">sem passeios</i></div>
+        <div class="range">17 – 19 nov · <b>2 noites</b> · <b>R$ 320 – 420</b></div>
       </div>
+      <div class="leg-cost"><span class="it">Passeios <b>—</b></span> · <span class="it">Alimentação <b>200 – 260</b></span> · <span class="it">Transporte <b>120 – 160</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
 
       <div class="day">
         <div class="date"><div class="dnum">17</div><div class="dwk">Ter</div></div>
@@ -498,8 +515,9 @@
     <div class="leg">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>El Calafate</div>
-        <div class="range">19 – 24 nov · <b>5 noites</b> · <b>R$ 5.940</b> em passeios</div>
+        <div class="range">19 – 24 nov · <b>5 noites</b> · <b>R$ 6.730 – 7.010</b></div>
       </div>
+      <div class="leg-cost"><span class="it">Passeios <b>5.940</b></span> · <span class="it">Alimentação <b>500 – 650</b></span> · <span class="it">Transporte <b>290 – 420</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
 
       <div class="day">
         <div class="date"><div class="dnum">19</div><div class="dwk">Qui</div></div>
@@ -572,8 +590,9 @@
     <div class="leg ush">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>Ushuaia</div>
-        <div class="range">24 – 28 nov · <b>4 noites</b> · <b>R$ 2.950</b> em passeios</div>
+        <div class="range">24 – 28 nov · <b>4 noites</b> · <b>R$ 3.740 – 4.020</b></div>
       </div>
+      <div class="leg-cost"><span class="it">Passeios <b>2.950</b></span> · <span class="it">Alimentação <b>500 – 650</b></span> · <span class="it">Transporte <b>290 – 420</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
 
       <div class="day">
         <div class="date"><div class="dnum">24</div><div class="dwk">Ter</div></div>
@@ -685,7 +704,7 @@
           </tr>
           <tr class="total">
             <td><div class="item">Total estimado</div><div class="note">Hospedagem nos pontos · sem seguro (já temos pelo cartão)</div></td>
-            <td class="val">R$ 21.600 – 22.250<span class="pp">≈ R$ 10.800 – 11.125 por pessoa</span></td>
+            <td class="val">R$ 21.590 – 22.250<span class="pp">≈ R$ 10.795 – 11.125 por pessoa</span></td>
           </tr>
         </tbody>
       </table>
