@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="Patagônia">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="format-detection" content="telephone=no">
-  <title>Patagônia · El Calafate + Ushuaia</title>
+  <title>Patagônia · Buenos Aires + El Calafate + Ushuaia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,6 +27,8 @@
       --teal-bg:  #e4eded;
       --amber:    #9a5b27;
       --amber-bg: #f3e7d8;
+      --ba:       #7a3548;
+      --ba-bg:    #f1e2e6;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html {
@@ -90,11 +92,11 @@
       content: '';
       position: absolute; right: -80px; top: -80px;
       width: 240px; height: 240px;
-      background: radial-gradient(circle, rgba(31,85,96,.07), transparent 70%);
+      background: radial-gradient(circle, rgba(122,53,72,.07), transparent 70%);
     }
     .eyebrow {
       font-size: 12px; font-weight: 600; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--teal);
+      text-transform: uppercase; color: var(--ba);
       margin-bottom: 12px;
     }
     header h1 {
@@ -105,7 +107,7 @@
       letter-spacing: -.025em;
       color: var(--ink);
     }
-    header h1 em { font-style: italic; color: var(--teal); font-weight: 400; }
+    header h1 em { font-style: italic; color: var(--ba); font-weight: 400; }
     .header-meta {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -167,6 +169,7 @@
       width: 4px; border-radius: 4px;
       background: var(--teal);
     }
+    .leg.ba::before  { background: var(--ba); }
     .leg.ush::before { background: var(--amber); }
 
     .leg-head {
@@ -184,6 +187,7 @@
       width: 9px; height: 9px; border-radius: 50%;
       background: var(--teal);
     }
+    .leg.ba  .leg-head .city .dot { background: var(--ba); }
     .leg.ush .leg-head .city .dot { background: var(--amber); }
     .leg-head .range {
       margin-left: auto;
@@ -194,7 +198,11 @@
       color: var(--teal); font-weight: 700;
       font-variant-numeric: tabular-nums;
     }
+    .leg.ba  .leg-head .range b { color: var(--ba); }
     .leg.ush .leg-head .range b { color: var(--amber); }
+    .leg-head .range .none {
+      font-style: italic; font-weight: 600; color: var(--ink-3);
+    }
 
     /* ===== LEG COST BREAKDOWN ===== */
     .leg-cost {
@@ -209,6 +217,7 @@
       font-variant-numeric: tabular-nums;
     }
     .leg-cost .pts { color: var(--teal); font-weight: 600; }
+    .leg.ba  .leg-cost .pts { color: var(--ba); }
     .leg.ush .leg-cost .pts { color: var(--amber); }
 
     /* ===== DAYS ===== */
@@ -240,6 +249,8 @@
     }
     .move.in  { background: var(--teal-bg); color: var(--teal); }
     .move.out { background: var(--amber-bg); color: var(--amber); }
+    .move.ba  { background: var(--ba-bg); color: var(--ba); }
+    .leg.ba  .move.in { background: var(--ba-bg); color: var(--ba); }
     .leg.ush .move.in { background: var(--amber-bg); color: var(--amber); }
     .day .plan {
       font-size: 14.5px; color: var(--ink-2); line-height: 1.5;
@@ -258,6 +269,7 @@
       color: var(--teal); font-weight: 700;
       font-size: 14px; line-height: 1.45;
     }
+    .leg.ba  .tour .marker { color: var(--ba); }
     .leg.ush .tour .marker { color: var(--amber); }
     .tour .marker.star { color: var(--amber); font-size: 13px; }
     .leg.ush .tour .marker.star { color: var(--amber); }
@@ -273,6 +285,7 @@
       font-weight: 700; color: var(--teal); font-size: 13px;
       white-space: nowrap; font-variant-numeric: tabular-nums;
     }
+    .leg.ba  .tour .ttl .price { color: var(--ba); }
     .leg.ush .tour .ttl .price { color: var(--amber); }
     .tour .ttl .price.free { color: var(--ink-3); font-style: italic; font-weight: 600; }
     .tour .dsc {
@@ -291,6 +304,8 @@
       transition: all .15s;
     }
     .tour .buy:hover { border-color: var(--teal); background: var(--teal-bg); }
+    .leg.ba  .tour .buy { color: var(--ba); }
+    .leg.ba  .tour .buy:hover { border-color: var(--ba); background: var(--ba-bg); }
     .leg.ush .tour .buy { color: var(--amber); }
     .leg.ush .tour .buy:hover { border-color: var(--amber); background: var(--amber-bg); }
     .tour .buy svg { width: 11px; height: 11px; }
@@ -298,6 +313,7 @@
       font-size: 13px; color: var(--ink-3); font-style: italic;
       margin-top: 10px;
     }
+    .day .free:first-child { margin-top: 2px; }
 
     @media (max-width: 520px) {
       .leg-head .range { margin-left: 0; flex-basis: 100%; }
@@ -333,7 +349,7 @@
     }
     tr.total .item {
       font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600;
-      color: var(--teal);
+      color: var(--ba);
     }
     tr.total td.val {
       font-family: 'Fraunces', serif; font-size: 19px;
@@ -342,7 +358,7 @@
     tr.total td.val .pp {
       display: block;
       font-family: 'Hanken Grotesk', sans-serif;
-      font-size: 12.5px; font-weight: 600; color: var(--teal);
+      font-size: 12.5px; font-weight: 600; color: var(--ba);
       margin-top: 4px; letter-spacing: .01em;
     }
     .cost-foot {
@@ -360,7 +376,8 @@
     @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
     header, .sec-title, .leg, .cost-card { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
     .sec-title { animation-delay: .05s; }
-    .leg.ush { animation-delay: .1s; }
+    .leg { animation-delay: .08s; }
+    .leg.ush { animation-delay: .12s; }
 
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; }
@@ -439,26 +456,26 @@
 
     <nav class="ver-switch">
       <a href="./">BA ida+volta · 12d</a>
-      <a href="ba-na-ida.html">BA na ida · 12d</a>
-      <a href="classico.html" class="on">Sem BA · 10d</a>
+      <a href="ba-na-ida.html" class="on">BA na ida · 12d</a>
+      <a href="classico.html">Sem BA · 10d</a>
     </nav>
 
     <!-- ===== HEADER ===== -->
     <header>
-      <div class="eyebrow">Patagônia Argentina</div>
-      <h1>El Calafate <em>&amp;</em> Ushuaia</h1>
+      <div class="eyebrow">Argentina · Novembro 2026</div>
+      <h1>Patagônia <em>via</em> Buenos Aires</h1>
       <div class="header-meta">
         <div class="m">
           <div class="k">Quando</div>
-          <div class="v">17 — 26 nov<small>2026</small></div>
+          <div class="v">17 — 28 nov<small>2026</small></div>
         </div>
         <div class="m">
           <div class="k">Duração</div>
-          <div class="v">10 dias<small>9 noites</small></div>
+          <div class="v">12 dias<small>11 noites</small></div>
         </div>
         <div class="m">
           <div class="k">Cidades</div>
-          <div class="v">2<small>El Calafate · Ushuaia</small></div>
+          <div class="v">3<small>Buenos Aires · El Calafate · Ushuaia</small></div>
         </div>
         <div class="m">
           <div class="k">Pessoas</div>
@@ -471,24 +488,48 @@
     <div class="sec-title">Dia a dia</div>
     <p class="sec-note">Valores médios para o casal (2 pessoas), já considerando a cobrança em dólar para estrangeiros — referência junho/2026, sujeitos a câmbio. O custo de cada cidade soma passeios + alimentação + transporte local (esses dois rateados por dia). Hotéis saem nos pontos, e os voos entram só no total geral por ligarem as cidades.</p>
 
-    <!-- ===== EL CALAFATE ===== -->
-    <div class="leg">
+    <!-- ===== BUENOS AIRES ===== -->
+    <div class="leg ba">
       <div class="leg-head">
-        <div class="city"><span class="dot"></span>El Calafate</div>
-        <div class="range">17 – 21 nov · <b>5 noites</b> · <b>R$ 6.740 – 7.040</b></div>
+        <div class="city"><span class="dot"></span>Buenos Aires</div>
+        <div class="range">17 – 19 nov · <b>2 noites</b> · <b>R$ 320 – 420</b></div>
       </div>
-      <div class="leg-cost"><span class="it">Passeios <b>5.940</b></span> · <span class="it">Alimentação <b>500 – 650</b></span> · <span class="it">Transporte <b>300 – 450</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
+      <div class="leg-cost"><span class="it">Passeios <b>—</b></span> · <span class="it">Alimentação <b>200 – 260</b></span> · <span class="it">Transporte <b>120 – 160</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
 
       <div class="day">
         <div class="date"><div class="dnum">17</div><div class="dwk">Ter</div></div>
         <div class="body">
           <div class="day-move"><span class="move in">Chegada</span></div>
-          <div class="plan">Voo <b>GRU → El Calafate</b> (via Buenos Aires). Check-in no hotel e primeira volta pelo centrinho.</div>
+          <div class="plan">Voo <b>GRU → Buenos Aires</b>. Check-in no hotel e primeira noite na cidade.</div>
         </div>
       </div>
 
       <div class="day">
         <div class="date"><div class="dnum">18</div><div class="dwk">Qua</div></div>
+        <div class="body">
+          <div class="free">Dia inteiro livre em Buenos Aires — nada marcado, para decidir na hora.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== EL CALAFATE ===== -->
+    <div class="leg">
+      <div class="leg-head">
+        <div class="city"><span class="dot"></span>El Calafate</div>
+        <div class="range">19 – 24 nov · <b>5 noites</b> · <b>R$ 6.730 – 7.010</b></div>
+      </div>
+      <div class="leg-cost"><span class="it">Passeios <b>5.940</b></span> · <span class="it">Alimentação <b>500 – 650</b></span> · <span class="it">Transporte <b>290 – 420</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">19</div><div class="dwk">Qui</div></div>
+        <div class="body">
+          <div class="day-move"><span class="move ba">Saída Buenos Aires</span><span class="move in">Chegada El Calafate</span></div>
+          <div class="plan">Voo <b>Buenos Aires → El Calafate</b>. Check-in no hotel e primeira volta pelo centrinho.</div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="date"><div class="dnum">20</div><div class="dwk">Sex</div></div>
         <div class="body">
           <div class="tour">
             <span class="marker">→</span>
@@ -503,7 +544,7 @@
       </div>
 
       <div class="day">
-        <div class="date"><div class="dnum">19</div><div class="dwk">Qui</div></div>
+        <div class="date"><div class="dnum">21</div><div class="dwk">Sáb</div></div>
         <div class="body">
           <div class="tour">
             <span class="marker star">★</span>
@@ -517,7 +558,7 @@
       </div>
 
       <div class="day">
-        <div class="date"><div class="dnum">20</div><div class="dwk">Sex</div></div>
+        <div class="date"><div class="dnum">22</div><div class="dwk">Dom</div></div>
         <div class="body">
           <div class="tour">
             <span class="marker star">★</span>
@@ -531,7 +572,7 @@
       </div>
 
       <div class="day">
-        <div class="date"><div class="dnum">21</div><div class="dwk">Sáb</div></div>
+        <div class="date"><div class="dnum">23</div><div class="dwk">Seg</div></div>
         <div class="body">
           <div class="tour">
             <span class="marker">→</span>
@@ -550,21 +591,21 @@
     <div class="leg ush">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>Ushuaia</div>
-        <div class="range">22 – 25 nov · <b>4 noites</b> · <b>R$ 3.750 – 4.050</b></div>
+        <div class="range">24 – 28 nov · <b>4 noites</b> · <b>R$ 3.740 – 4.020</b></div>
       </div>
-      <div class="leg-cost"><span class="it">Passeios <b>2.950</b></span> · <span class="it">Alimentação <b>500 – 650</b></span> · <span class="it">Transporte <b>300 – 450</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
+      <div class="leg-cost"><span class="it">Passeios <b>2.950</b></span> · <span class="it">Alimentação <b>500 – 650</b></span> · <span class="it">Transporte <b>290 – 420</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
 
       <div class="day">
-        <div class="date"><div class="dnum">22</div><div class="dwk">Dom</div></div>
+        <div class="date"><div class="dnum">24</div><div class="dwk">Ter</div></div>
         <div class="body">
           <div class="day-move"><span class="move out">Saída El Calafate</span><span class="move in">Chegada Ushuaia</span></div>
-          <div class="plan">Voo <b>El Calafate → Ushuaia</b> às 15:30 (direto, 1h20).</div>
+          <div class="plan">Voo <b>El Calafate → Ushuaia</b> (direto, 1h20).</div>
           <div class="free">Tarde livre em Ushuaia para descansar e conhecer o centro.</div>
         </div>
       </div>
 
       <div class="day">
-        <div class="date"><div class="dnum">23</div><div class="dwk">Seg</div></div>
+        <div class="date"><div class="dnum">25</div><div class="dwk">Qua</div></div>
         <div class="body">
           <div class="tour">
             <span class="marker star">★</span>
@@ -578,7 +619,7 @@
       </div>
 
       <div class="day">
-        <div class="date"><div class="dnum">24</div><div class="dwk">Ter</div></div>
+        <div class="date"><div class="dnum">26</div><div class="dwk">Qui</div></div>
         <div class="body">
           <div class="tour">
             <span class="marker">→</span>
@@ -600,17 +641,17 @@
       </div>
 
       <div class="day">
-        <div class="date"><div class="dnum">25</div><div class="dwk">Qua</div></div>
+        <div class="date"><div class="dnum">27</div><div class="dwk">Sex</div></div>
         <div class="body">
           <div class="free">Dia livre em Ushuaia.</div>
         </div>
       </div>
 
       <div class="day">
-        <div class="date"><div class="dnum">26</div><div class="dwk">Qui</div></div>
+        <div class="date"><div class="dnum">28</div><div class="dwk">Sáb</div></div>
         <div class="body">
           <div class="day-move"><span class="move out">Saída</span></div>
-          <div class="plan">Voo <b>Ushuaia → GRU</b> às 10:20 (via Buenos Aires). Volta pra casa.</div>
+          <div class="plan">Voo <b>Ushuaia → GRU</b>. Volta pra casa.</div>
         </div>
       </div>
     </div>
@@ -628,8 +669,12 @@
         </thead>
         <tbody>
           <tr>
-            <td><div class="item">Passagens aéreas</div><div class="note">3 trechos · R$ 4.900 por pessoa</div></td>
-            <td class="val">R$ 9.800</td>
+            <td><div class="item">Passagens aéreas</div><div class="note">4 trechos · R$ 5.400 por pessoa</div></td>
+            <td class="val">R$ 10.800</td>
+          </tr>
+          <tr>
+            <td><div class="item">Hotel Buenos Aires</div><div class="note">2 noites</div></td>
+            <td class="val points">Pontos AAdvantage</td>
           </tr>
           <tr>
             <td><div class="item">Hotel El Calafate</div><div class="note">5 noites</div></td>
@@ -644,23 +689,23 @@
             <td class="val">R$ 8.890</td>
           </tr>
           <tr>
-            <td><div class="item">Alimentação</div><div class="note">10 dias · ~R$ 50–65/dia por pessoa</div></td>
-            <td class="val">R$ 1.000 – 1.300</td>
+            <td><div class="item">Alimentação</div><div class="note">12 dias · ~R$ 50–65/dia por pessoa</div></td>
+            <td class="val">R$ 1.200 – 1.560</td>
           </tr>
           <tr>
-            <td><div class="item">Transporte local</div><div class="note">Transfers, remises, bate-volta El Chaltén</div></td>
-            <td class="val">R$ 600 – 900</td>
+            <td><div class="item">Transporte local</div><div class="note">Transfers, remises, subte/táxi em BA, bate-volta El Chaltén</div></td>
+            <td class="val">R$ 700 – 1.000</td>
           </tr>
           <tr class="total">
             <td><div class="item">Total estimado</div><div class="note">Hospedagem nos pontos · sem seguro (já temos pelo cartão)</div></td>
-            <td class="val">R$ 20.290 – 20.890<span class="pp">≈ R$ 10.145 – 10.445 por pessoa</span></td>
+            <td class="val">R$ 21.590 – 22.250<span class="pp">≈ R$ 10.795 – 11.125 por pessoa</span></td>
           </tr>
         </tbody>
       </table>
-      <p class="cost-foot">Os dois hotéis serão pagos com pontos AAdvantage, então ficam fora do desembolso em dinheiro. Seguro viagem já coberto pelo cartão. Passeios em valores médios de junho/2026 (estrangeiro paga em dólar) — o Mini Trekking, sozinho, é metade do custo de passeios; sem ele o total cai para ~R$ 16 mil.</p>
+      <p class="cost-foot">Os três hotéis serão pagos com pontos AAdvantage, então ficam fora do desembolso em dinheiro. Seguro viagem já coberto pelo cartão. A parada em Buenos Aires evita a escala noturna de ~12 h com troca de aeroporto e ainda barateia a passagem (R$ 5.400 vs. R$ 4.900 por pessoa antes, mas com 2 dias a mais de viagem). Passeios em valores médios de junho/2026 (estrangeiro paga em dólar) — o Mini Trekking, sozinho, é metade do custo de passeios; sem ele o total cai para ~R$ 17 mil.</p>
     </div>
 
-    <footer>Patagônia 2026 · El Calafate + Ushuaia</footer>
+    <footer>Patagônia 2026 · Buenos Aires + El Calafate + Ushuaia</footer>
 
   </div>
 </body>

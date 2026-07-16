@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="Patagônia">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="format-detection" content="telephone=no">
-  <title>Patagônia · Buenos Aires + El Calafate + Ushuaia</title>
+  <title>Patagônia · Voos separados via Buenos Aires</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -189,6 +189,12 @@
     }
     .leg.ba  .leg-head .city .dot { background: var(--ba); }
     .leg.ush .leg-head .city .dot { background: var(--amber); }
+    .leg-head .city .again {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: .04em;
+      color: var(--ink-3); text-transform: uppercase;
+      align-self: center;
+    }
     .leg-head .range {
       margin-left: auto;
       font-size: 13px; font-weight: 600; color: var(--ink-3);
@@ -247,11 +253,14 @@
       text-transform: uppercase;
       padding: 2px 9px; border-radius: 5px;
     }
+    /* chegada herda a cor da leg de destino */
     .move.in  { background: var(--teal-bg); color: var(--teal); }
-    .move.out { background: var(--amber-bg); color: var(--amber); }
-    .move.ba  { background: var(--ba-bg); color: var(--ba); }
     .leg.ba  .move.in { background: var(--ba-bg); color: var(--ba); }
     .leg.ush .move.in { background: var(--amber-bg); color: var(--amber); }
+    /* saída carrega a cor da cidade que está sendo deixada */
+    .move.ba  { background: var(--ba-bg); color: var(--ba); }
+    .move.cal { background: var(--teal-bg); color: var(--teal); }
+    .move.ush { background: var(--amber-bg); color: var(--amber); }
     .day .plan {
       font-size: 14.5px; color: var(--ink-2); line-height: 1.5;
     }
@@ -455,8 +464,8 @@
   <div class="wrap">
 
     <nav class="ver-switch">
-      <a href="./" class="on">BA na ida · 12d</a>
-      <a href="voos-separados.html">BA ida+volta · 12d</a>
+      <a href="./" class="on">BA ida+volta · 12d</a>
+      <a href="ba-na-ida.html">BA na ida · 12d</a>
       <a href="classico.html">Sem BA · 10d</a>
     </nav>
 
@@ -486,15 +495,15 @@
 
     <!-- ===== DIA A DIA ===== -->
     <div class="sec-title">Dia a dia</div>
-    <p class="sec-note">Valores médios para o casal (2 pessoas), já considerando a cobrança em dólar para estrangeiros — referência junho/2026, sujeitos a câmbio. O custo de cada cidade soma passeios + alimentação + transporte local (esses dois rateados por dia). Hotéis saem nos pontos, e os voos entram só no total geral por ligarem as cidades.</p>
+    <p class="sec-note">Nesta versão as passagens são compradas separadas: um ida e volta GRU ↔ Buenos Aires, mais os trechos internos argentinos por fora. Por isso a viagem começa e termina em Buenos Aires, com uma noite lá também na volta. Valores médios para o casal (2 pessoas), referência junho/2026. O custo de cada cidade soma passeios + alimentação + transporte local (esses dois rateados por dia). Hotéis saem nos pontos, e os voos entram só no total geral por ligarem as cidades.</p>
 
-    <!-- ===== BUENOS AIRES ===== -->
+    <!-- ===== BUENOS AIRES (IDA) ===== -->
     <div class="leg ba">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>Buenos Aires</div>
-        <div class="range">17 – 19 nov · <b>2 noites</b> · <b>R$ 320 – 420</b></div>
+        <div class="range">17 – 19 nov · <b>2 noites</b> · <b>R$ 315 – 425</b></div>
       </div>
-      <div class="leg-cost"><span class="it">Passeios <b>—</b></span> · <span class="it">Alimentação <b>200 – 260</b></span> · <span class="it">Transporte <b>120 – 160</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
+      <div class="leg-cost"><span class="it">Passeios <b>—</b></span> · <span class="it">Alimentação <b>200 – 260</b></span> · <span class="it">Transporte <b>115 – 165</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
 
       <div class="day">
         <div class="date"><div class="dnum">17</div><div class="dwk">Ter</div></div>
@@ -516,9 +525,9 @@
     <div class="leg">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>El Calafate</div>
-        <div class="range">19 – 24 nov · <b>5 noites</b> · <b>R$ 6.730 – 7.010</b></div>
+        <div class="range">19 – 24 nov · <b>5 noites</b> · <b>R$ 6.735 – 7.010</b></div>
       </div>
-      <div class="leg-cost"><span class="it">Passeios <b>5.940</b></span> · <span class="it">Alimentação <b>500 – 650</b></span> · <span class="it">Transporte <b>290 – 420</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
+      <div class="leg-cost"><span class="it">Passeios <b>5.940</b></span> · <span class="it">Alimentação <b>500 – 650</b></span> · <span class="it">Transporte <b>295 – 420</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
 
       <div class="day">
         <div class="date"><div class="dnum">19</div><div class="dwk">Qui</div></div>
@@ -591,14 +600,14 @@
     <div class="leg ush">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>Ushuaia</div>
-        <div class="range">24 – 28 nov · <b>4 noites</b> · <b>R$ 3.740 – 4.020</b></div>
+        <div class="range">24 – 27 nov · <b>3 noites</b> · <b>R$ 3.425 – 3.590</b></div>
       </div>
-      <div class="leg-cost"><span class="it">Passeios <b>2.950</b></span> · <span class="it">Alimentação <b>500 – 650</b></span> · <span class="it">Transporte <b>290 – 420</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
+      <div class="leg-cost"><span class="it">Passeios <b>2.950</b></span> · <span class="it">Alimentação <b>300 – 390</b></span> · <span class="it">Transporte <b>175 – 250</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
 
       <div class="day">
         <div class="date"><div class="dnum">24</div><div class="dwk">Ter</div></div>
         <div class="body">
-          <div class="day-move"><span class="move out">Saída El Calafate</span><span class="move in">Chegada Ushuaia</span></div>
+          <div class="day-move"><span class="move cal">Saída El Calafate</span><span class="move in">Chegada Ushuaia</span></div>
           <div class="plan">Voo <b>El Calafate → Ushuaia</b> (direto, 1h20).</div>
           <div class="free">Tarde livre em Ushuaia para descansar e conhecer o centro.</div>
         </div>
@@ -639,19 +648,29 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- ===== BUENOS AIRES (VOLTA) ===== -->
+    <div class="leg ba">
+      <div class="leg-head">
+        <div class="city"><span class="dot"></span>Buenos Aires<span class="again">de novo</span></div>
+        <div class="range">27 – 28 nov · <b>1 noite</b> · <b>R$ 315 – 425</b></div>
+      </div>
+      <div class="leg-cost"><span class="it">Passeios <b>—</b></span> · <span class="it">Alimentação <b>200 – 260</b></span> · <span class="it">Transporte <b>115 – 165</b></span> · <span class="it">Hotel <span class="pts">nos pontos</span></span></div>
 
       <div class="day">
         <div class="date"><div class="dnum">27</div><div class="dwk">Sex</div></div>
         <div class="body">
-          <div class="free">Dia livre em Ushuaia.</div>
+          <div class="day-move"><span class="move ush">Saída Ushuaia</span><span class="move in">Chegada Buenos Aires</span></div>
+          <div class="plan">Voo <b>Ushuaia → Buenos Aires</b>. Última noite fora, já na cidade de onde sai o voo de volta.</div>
         </div>
       </div>
 
       <div class="day">
         <div class="date"><div class="dnum">28</div><div class="dwk">Sáb</div></div>
         <div class="body">
-          <div class="day-move"><span class="move out">Saída</span></div>
-          <div class="plan">Voo <b>Ushuaia → GRU</b>. Volta pra casa.</div>
+          <div class="day-move"><span class="move ba">Saída</span></div>
+          <div class="plan">Voo <b>Buenos Aires → GRU</b>. Volta pra casa.</div>
         </div>
       </div>
     </div>
@@ -669,11 +688,15 @@
         </thead>
         <tbody>
           <tr>
-            <td><div class="item">Passagens aéreas</div><div class="note">4 trechos · R$ 5.400 por pessoa</div></td>
-            <td class="val">R$ 10.800</td>
+            <td><div class="item">Passagem GRU ↔ Buenos Aires</div><div class="note">Ida e volta · R$ 1.928 por pessoa</div></td>
+            <td class="val">R$ 3.856</td>
           </tr>
           <tr>
-            <td><div class="item">Hotel Buenos Aires</div><div class="note">2 noites</div></td>
+            <td><div class="item">Voos internos na Argentina</div><div class="note">3 trechos · R$ 2.650 por pessoa</div></td>
+            <td class="val">R$ 5.300</td>
+          </tr>
+          <tr>
+            <td><div class="item">Hotel Buenos Aires</div><div class="note">3 noites · 2 na ida + 1 na volta</div></td>
             <td class="val points">Pontos AAdvantage</td>
           </tr>
           <tr>
@@ -681,7 +704,7 @@
             <td class="val points">Pontos AAdvantage</td>
           </tr>
           <tr>
-            <td><div class="item">Hotel Ushuaia</div><div class="note">4 noites</div></td>
+            <td><div class="item">Hotel Ushuaia</div><div class="note">3 noites</div></td>
             <td class="val points">Pontos AAdvantage</td>
           </tr>
           <tr>
@@ -698,14 +721,14 @@
           </tr>
           <tr class="total">
             <td><div class="item">Total estimado</div><div class="note">Hospedagem nos pontos · sem seguro (já temos pelo cartão)</div></td>
-            <td class="val">R$ 21.590 – 22.250<span class="pp">≈ R$ 10.795 – 11.125 por pessoa</span></td>
+            <td class="val">R$ 19.946 – 20.606<span class="pp">≈ R$ 9.973 – 10.303 por pessoa</span></td>
           </tr>
         </tbody>
       </table>
-      <p class="cost-foot">Os três hotéis serão pagos com pontos AAdvantage, então ficam fora do desembolso em dinheiro. Seguro viagem já coberto pelo cartão. A parada em Buenos Aires evita a escala noturna de ~12 h com troca de aeroporto e ainda barateia a passagem (R$ 5.400 vs. R$ 4.900 por pessoa antes, mas com 2 dias a mais de viagem). Passeios em valores médios de junho/2026 (estrangeiro paga em dólar) — o Mini Trekking, sozinho, é metade do custo de passeios; sem ele o total cai para ~R$ 17 mil.</p>
+      <p class="cost-foot">Comprar o ida e volta internacional separado dos trechos internos sai <b>R$ 1.644 mais barato</b> que a passagem única (R$ 9.156 contra R$ 10.800), pela mesma duração de 12 dias. Em troca, Ushuaia fica com 3 noites em vez de 4 — mas nenhum passeio se perde, já que o dia extra era livre. Os três hotéis saem nos pontos AAdvantage e ficam fora do desembolso em dinheiro; seguro viagem já coberto pelo cartão. Passeios em valores médios de junho/2026 (estrangeiro paga em dólar) — o Mini Trekking, sozinho, é metade do custo de passeios.</p>
     </div>
 
-    <footer>Patagônia 2026 · Buenos Aires + El Calafate + Ushuaia</footer>
+    <footer>Patagônia 2026 · Voos separados via Buenos Aires</footer>
 
   </div>
 </body>
