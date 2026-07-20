@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="Patagônia">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="format-detection" content="telephone=no">
-  <title>Patagônia 2026 · Overview</title>
+  <title>Ushuaia · Novembro 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,8 +23,11 @@
       --line:     #ddd8c8;
       --line-2:   #ebe7da;
       --teal:     #1f5560;
+      --teal-bg:  #dcebe9;
       --amber:    #9a5b27;
+      --amber-bg: #f3e3cf;
       --ba:       #7a3548;
+      --ba-bg:    #f0dde3;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html {
@@ -39,102 +42,185 @@
       -webkit-font-smoothing: antialiased;
       -webkit-tap-highlight-color: transparent;
       overflow-x: hidden;
-      padding: max(28px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+      padding: max(24px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(36px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
     }
-    .wrap {
-      max-width: 620px; margin: 0 auto;
-    }
+    .wrap { max-width: 880px; margin: 0 auto; }
 
-    /* ===== VERSION SWITCH ===== */
+    /* ===== NAV ===== */
     .ver-switch {
-      display: flex;
-      gap: 3px;
-      padding: 3px;
+      display: flex; gap: 3px; padding: 3px;
       background: var(--paper-2);
       border: 1px solid var(--line);
       border-radius: 999px;
-      width: fit-content;
-      max-width: 100%;
-      margin-bottom: 30px;
+      width: fit-content; max-width: 100%;
+      margin-bottom: 26px;
     }
     .ver-switch a {
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-size: 12px; font-weight: 700;
-      letter-spacing: .01em;
-      text-decoration: none;
-      color: var(--ink-3);
-      white-space: nowrap;
+      padding: 6px 16px; border-radius: 999px;
+      font-size: 12px; font-weight: 700; letter-spacing: .01em;
+      text-decoration: none; color: var(--ink-3); white-space: nowrap;
       transition: background .15s, color .15s;
     }
     .ver-switch a:hover { color: var(--ink); }
     .ver-switch a.on { background: var(--ink); color: var(--paper-2); }
 
-    /* ===== TITLE ===== */
-    .eyebrow {
+    /* ===== HEADER ===== */
+    header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 22px;
+    }
+    header h1 {
+      font-size: clamp(30px, 6vw, 40px);
+      font-weight: 800; letter-spacing: -.02em; line-height: 1;
+    }
+    header .icons { font-size: clamp(16px, 3vw, 20px); letter-spacing: 2px; }
+
+    /* ===== LAYOUT ===== */
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 250px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ===== CALENDAR ===== */
+    .cal-title {
       font-size: 12px; font-weight: 700; letter-spacing: .12em;
       text-transform: uppercase; color: var(--ink-3);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
-    h1 {
-      font-size: clamp(26px, 5.5vw, 34px);
-      font-weight: 800; letter-spacing: -.02em;
-      line-height: 1.15;
-      margin-bottom: 28px;
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
     }
+    .calendar .wd {
+      text-align: center;
+      font-size: 10.5px; font-weight: 700; letter-spacing: .08em;
+      color: var(--ink-3);
+      padding-bottom: 4px;
+    }
+    .cell {
+      border-radius: 9px;
+      min-height: 58px;
+      padding: 6px 7px;
+      background: var(--paper-2);
+      border: 1px solid var(--line-2);
+      position: relative;
+      display: flex; flex-direction: column;
+    }
+    .cell.blank { background: transparent; border-color: transparent; }
+    .cell .d {
+      font-size: 13px; font-weight: 700; color: var(--ink-3);
+      line-height: 1;
+    }
+    .cell.off .d { color: #c9c4b4; font-weight: 600; }
 
-    /* ===== PROSE ===== */
-    .prose {
-      font-size: 17px;
-      line-height: 1.75;
+    .cell.ba  { background: var(--ba-bg);  border-color: var(--ba-bg); }
+    .cell.cal { background: var(--teal-bg); border-color: var(--teal-bg); }
+    .cell.ush { background: var(--amber-bg); border-color: var(--amber-bg); }
+    .cell.ba  .d { color: var(--ba); }
+    .cell.cal .d { color: var(--teal); }
+    .cell.ush .d { color: var(--amber); }
+
+    /* dias de transição: metade de cada cor */
+    .cell.ba-cal  { background: linear-gradient(135deg, var(--ba-bg) 50%, var(--teal-bg) 50%); border-color: var(--line-2); }
+    .cell.cal-ush { background: linear-gradient(135deg, var(--teal-bg) 50%, var(--amber-bg) 50%); border-color: var(--line-2); }
+    .cell.ush-ba  { background: linear-gradient(135deg, var(--amber-bg) 50%, var(--ba-bg) 50%); border-color: var(--line-2); }
+    .cell.ba-cal .d, .cell.cal-ush .d, .cell.ush-ba .d { color: var(--ink); }
+
+    .cell .fl {
+      margin-top: auto;
+      font-size: 9.5px; font-weight: 700; line-height: 1.3;
       color: var(--ink-2);
-    }
-    .prose p { margin-bottom: 20px; }
-    .prose b { color: var(--ink); font-weight: 700; }
-    .prose .n { font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .prose .city {
-      font-weight: 800;
+      font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
-    .city.ba   { color: var(--ba); }
-    .city.cal  { color: var(--teal); }
-    .city.ush  { color: var(--amber); }
-    .prose .pts { color: var(--teal); font-weight: 700; white-space: nowrap; }
+    .cell .fl .rt { display: block; }
+    .cell .fl .tm { display: block; font-weight: 600; color: var(--ink-3); }
 
-    /* ===== TOTAL BLOCK ===== */
-    .total-block {
-      margin-top: 34px;
-      padding-top: 22px;
+    /* ===== LEGEND ===== */
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 8px 20px;
+      margin-top: 14px;
+    }
+    .legend .li {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 600; color: var(--ink-2);
+      white-space: nowrap;
+    }
+    .legend .sw {
+      width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0;
+    }
+    .legend .sw.ba  { background: var(--ba-bg);  border: 1.5px solid var(--ba); }
+    .legend .sw.cal { background: var(--teal-bg); border: 1.5px solid var(--teal); }
+    .legend .sw.ush { background: var(--amber-bg); border: 1.5px solid var(--amber); }
+    .legend b { color: var(--ink); }
+    .legend .fl-note { font-size: 12.5px; color: var(--ink-3); font-weight: 600; }
+
+    .cal-foot {
+      font-size: 11.5px; color: var(--ink-3); font-style: italic;
+      margin-top: 10px; line-height: 1.5;
+    }
+
+    /* ===== SIDEBAR: COSTS ===== */
+    .costs .lbl {
+      font-size: 12px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--ink-3);
+      margin-bottom: 10px;
+    }
+    .costs .row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line-2);
+      font-size: 14px;
+    }
+    .costs .row .k { font-weight: 600; color: var(--ink-2); }
+    .costs .row .v {
+      font-weight: 700; color: var(--ink);
+      font-variant-numeric: tabular-nums; white-space: nowrap;
+      text-align: right;
+    }
+    .costs .row .v.pts { color: var(--teal); font-size: 12px; }
+    .costs .total {
+      margin-top: 14px; padding-top: 14px;
       border-top: 2px solid var(--ink);
     }
-    .total-block .lbl {
-      font-size: 12px; font-weight: 700; letter-spacing: .1em;
+    .costs .total .k {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase; color: var(--ink-3);
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
-    .total-block .num {
-      font-size: clamp(32px, 7vw, 42px);
-      font-weight: 800; letter-spacing: -.02em;
-      color: var(--ink); line-height: 1.05;
+    .costs .total .v {
+      font-size: 22px; font-weight: 800; letter-spacing: -.01em;
+      color: var(--ink); line-height: 1.1;
       font-variant-numeric: tabular-nums;
     }
-    .total-block .pp {
-      font-size: 15px; font-weight: 600; color: var(--ink-3);
-      margin-top: 6px;
+    .costs .total .pp {
+      font-size: 12.5px; font-weight: 600; color: var(--ink-3);
+      margin-top: 4px;
     }
-    .total-block .pp b { color: var(--ink-2); font-weight: 700; }
+    .costs .total .pp b { color: var(--ink-2); white-space: nowrap; }
 
     footer {
-      margin-top: 40px;
-      font-size: 13px; color: var(--ink-3);
-      line-height: 1.6;
+      margin-top: 30px;
+      font-size: 12.5px; color: var(--ink-3);
     }
     footer a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--line); }
     footer a:hover { border-color: var(--ink); }
 
+    /* ===== MOBILE ===== */
+    @media (max-width: 720px) {
+      .main { grid-template-columns: 1fr; gap: 24px; }
+      .costs { border-top: 1px solid var(--line); padding-top: 20px; }
+    }
     @media (max-width: 480px) {
-      .prose { font-size: 16px; line-height: 1.7; }
-      h1 { margin-bottom: 24px; }
+      .calendar { gap: 3px; }
+      .cell { min-height: 50px; padding: 5px 5px; border-radius: 7px; }
+      .cell .d { font-size: 12px; }
+      .cell .fl { font-size: 8.5px; }
+      header h1 { font-size: 30px; }
     }
   </style>
 </head>
@@ -146,28 +232,85 @@
       <a href="detalhamento.html">Detalhamento</a>
     </nav>
 
-    <div class="eyebrow">Patagônia · Argentina</div>
-    <h1>17 a 28 de novembro de 2026</h1>
+    <header>
+      <h1>Ushuaia</h1>
+      <span class="icons">🇦🇷 🐧</span>
+    </header>
 
-    <div class="prose">
-      <p>
-        <b class="n">12 dias</b>, <b class="n">11 noites</b>, <b class="n">2 pessoas</b>. A viagem começa e termina em <b class="city ba">Buenos Aires</b>, passando por <b class="city cal">El Calafate</b> e <b class="city ush">Ushuaia</b> no meio.
-      </p>
-      <p>
-        Chegamos em <b class="city ba">Buenos Aires</b> no dia <b class="n">17</b> e ficamos <b class="n">2 noites</b> (até o dia <b class="n">19</b>). De lá seguimos pra <b class="city cal">El Calafate</b>, onde ficamos <b class="n">5 noites</b> (<b class="n">19</b> a <b class="n">24</b>). Depois vamos pra <b class="city ush">Ushuaia</b> por <b class="n">3 noites</b> (<b class="n">24</b> a <b class="n">27</b>), e voltamos pra <b class="city ba">Buenos Aires</b> por mais <b class="n">1 noite</b> antes do voo de volta, no dia <b class="n">28</b>.
-      </p>
-      <p>
-        As passagens saem mais baratas compradas separadas: um ida e volta <b>GRU ↔ Buenos Aires</b> por <b class="n">R$ 3.856</b>, mais os <b>3 trechos internos</b> dentro da Argentina por <b class="n">R$ 5.300</b> — total de <b class="n">R$ 9.156</b> pelas passagens do casal.
-      </p>
-      <p>
-        Os passeios já escolhidos (Perito Moreno, Mini Trekking, El Chaltén, Canal de Beagle, Trem do Fim do Mundo e mais) somam <b class="n">R$ 8.890</b>. A hospedagem nas três cidades sai pelos <b class="pts">pontos AAdvantage</b>, sem custo em dinheiro. Detalhes de cada passeio e o dia a dia completo estão na página de <a href="detalhamento.html" style="color:var(--ink); font-weight:700;">Detalhamento</a>.
-      </p>
-    </div>
+    <div class="main">
 
-    <div class="total-block">
-      <div class="lbl">Estimativa total · casal</div>
-      <div class="num">R$ 19.946 – 20.606</div>
-      <div class="pp">≈ <b>R$ 9.973 – 10.303</b> por pessoa · passagem + passeios + comida + transporte local, hospedagem à parte nos pontos</div>
+      <!-- ===== CALENDAR ===== -->
+      <div class="cal-wrap">
+        <div class="cal-title">Novembro 2026</div>
+        <div class="calendar">
+          <div class="wd">D</div><div class="wd">S</div><div class="wd">T</div><div class="wd">Q</div><div class="wd">Q</div><div class="wd">S</div><div class="wd">S</div>
+
+          <div class="cell off"><span class="d">1</span></div>
+          <div class="cell off"><span class="d">2</span></div>
+          <div class="cell off"><span class="d">3</span></div>
+          <div class="cell off"><span class="d">4</span></div>
+          <div class="cell off"><span class="d">5</span></div>
+          <div class="cell off"><span class="d">6</span></div>
+          <div class="cell off"><span class="d">7</span></div>
+
+          <div class="cell off"><span class="d">8</span></div>
+          <div class="cell off"><span class="d">9</span></div>
+          <div class="cell off"><span class="d">10</span></div>
+          <div class="cell off"><span class="d">11</span></div>
+          <div class="cell off"><span class="d">12</span></div>
+          <div class="cell off"><span class="d">13</span></div>
+          <div class="cell off"><span class="d">14</span></div>
+
+          <div class="cell off"><span class="d">15</span></div>
+          <div class="cell off"><span class="d">16</span></div>
+          <div class="cell ba"><span class="d">17</span><span class="fl"><span class="rt">✈ GRU→BA</span><span class="tm">09:30*</span></span></div>
+          <div class="cell ba"><span class="d">18</span></div>
+          <div class="cell ba-cal"><span class="d">19</span><span class="fl"><span class="rt">✈ BA→CLF</span><span class="tm">08:45*</span></span></div>
+          <div class="cell cal"><span class="d">20</span></div>
+          <div class="cell cal"><span class="d">21</span></div>
+
+          <div class="cell cal"><span class="d">22</span></div>
+          <div class="cell cal"><span class="d">23</span></div>
+          <div class="cell cal-ush"><span class="d">24</span><span class="fl"><span class="rt">✈ CLF→USH</span><span class="tm">15:30</span></span></div>
+          <div class="cell ush"><span class="d">25</span></div>
+          <div class="cell ush"><span class="d">26</span></div>
+          <div class="cell ush-ba"><span class="d">27</span><span class="fl"><span class="rt">✈ USH→BA</span><span class="tm">10:20</span></span></div>
+          <div class="cell ba"><span class="d">28</span><span class="fl"><span class="rt">✈ BA→GRU</span><span class="tm">14:00*</span></span></div>
+
+          <div class="cell off"><span class="d">29</span></div>
+          <div class="cell off"><span class="d">30</span></div>
+          <div class="cell blank"></div>
+          <div class="cell blank"></div>
+          <div class="cell blank"></div>
+          <div class="cell blank"></div>
+          <div class="cell blank"></div>
+        </div>
+
+        <div class="legend">
+          <div class="li"><span class="sw ba"></span>Buenos Aires · <b>3 noites</b></div>
+          <div class="li"><span class="sw cal"></span>El Calafate · <b>5 noites</b></div>
+          <div class="li"><span class="sw ush"></span>Ushuaia · <b>3 noites</b></div>
+          <div class="li fl-note">✈ dia de voo</div>
+        </div>
+
+        <p class="cal-foot">* horários estimados — fecham na compra das passagens. Os demais vêm das cotações já vistas.</p>
+      </div>
+
+      <!-- ===== COSTS ===== -->
+      <aside class="costs">
+        <div class="lbl">Gastos · casal</div>
+        <div class="row"><span class="k">Passagem</span><span class="v">R$ 9.156</span></div>
+        <div class="row"><span class="k">Hospedagem</span><span class="v pts">Pontos AAdvantage</span></div>
+        <div class="row"><span class="k">Passeios</span><span class="v">R$ 8.890</span></div>
+        <div class="row"><span class="k">Comida</span><span class="v">R$ 1.200–1.560</span></div>
+        <div class="row"><span class="k">Transporte local</span><span class="v">R$ 700–1.000</span></div>
+        <div class="total">
+          <div class="k">Total da viagem</div>
+          <div class="v">R$ 19.946–20.606</div>
+          <div class="pp">≈ <b>R$ 9.973–10.303</b> por pessoa</div>
+        </div>
+      </aside>
+
     </div>
 
     <footer>Patagônia 2026 · resumo para aprovação · <a href="detalhamento.html">ver roteiro completo →</a></footer>
