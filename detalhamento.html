@@ -51,7 +51,6 @@
       padding: 44px 0 calc(64px + env(safe-area-inset-bottom));
     }
 
-    /* ===== VERSION SWITCH ===== */
     .ver-switch {
       display: flex;
       gap: 3px;
@@ -79,7 +78,6 @@
       color: var(--paper-2);
     }
 
-    /* ===== HEADER ===== */
     header {
       display: flex; align-items: center; gap: 10px;
     }
@@ -95,7 +93,6 @@
     }
     .trip-meta b { color: var(--ink-2); font-weight: 700; white-space: nowrap; }
 
-    /* ===== SECTION TITLE ===== */
     .sec-title {
       font-size: 12px; font-weight: 700;
       letter-spacing: .12em; text-transform: uppercase;
@@ -111,7 +108,6 @@
       margin: 2px 0 8px;
     }
 
-    /* ===== LEG (city group) ===== */
     .leg {
       position: relative;
       padding-left: 26px;
@@ -162,13 +158,11 @@
       font-style: italic; font-weight: 600; color: var(--ink-3);
     }
 
-    /* ===== LEG COST BREAKDOWN ===== */
     .leg-cost {
       font-size: 12px; line-height: 1.65;
       color: var(--ink-3);
       margin: 7px 0 2px;
     }
-    /* cada item é indivisível: a quebra só acontece nos separadores */
     .leg-cost .it { white-space: nowrap; }
     .leg-cost b {
       color: var(--ink-2); font-weight: 700;
@@ -178,7 +172,6 @@
     .leg.ba  .leg-cost .pts { color: var(--ba); }
     .leg.ush .leg-cost .pts { color: var(--amber); }
 
-    /* ===== DAYS ===== */
     .day {
       display: grid;
       grid-template-columns: 54px 1fr;
@@ -205,11 +198,9 @@
       text-transform: uppercase;
       padding: 2px 9px; border-radius: 5px;
     }
-    /* chegada herda a cor da leg de destino */
     .move.in  { background: var(--teal-bg); color: var(--teal); }
     .leg.ba  .move.in { background: var(--ba-bg); color: var(--ba); }
     .leg.ush .move.in { background: var(--amber-bg); color: var(--amber); }
-    /* saída carrega a cor da cidade que está sendo deixada */
     .move.ba  { background: var(--ba-bg); color: var(--ba); }
     .move.cal { background: var(--teal-bg); color: var(--teal); }
     .move.ush { background: var(--amber-bg); color: var(--amber); }
@@ -218,7 +209,6 @@
     }
     .day .plan b { color: var(--ink); font-weight: 600; }
 
-    /* ===== TOUR ===== */
     .tour {
       display: grid;
       grid-template-columns: 16px 1fr;
@@ -280,7 +270,6 @@
       .leg-head .range { margin-left: 0; flex-basis: 100%; }
     }
 
-    /* ===== COST TABLE ===== */
     table { width: 100%; border-collapse: collapse; margin-top: 6px; }
     th {
       text-align: left;
@@ -334,7 +323,6 @@
     footer a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--line); }
     footer a:hover { border-color: var(--ink); }
 
-    /* ===== MOBILE (iPhone 14 / 15) ===== */
     @media (max-width: 480px) {
       body { font-size: 15.5px; }
       .wrap { padding-top: 30px; }
@@ -356,7 +344,6 @@
       .tour .ttl { gap: 8px; }
       .tour .ttl .price { font-size: 13px; }
       .tour .dsc { font-size: 13.5px; }
-      /* botão de compra com alvo de toque confortável */
       .tour .buy {
         margin-top: 8px;
         padding: 7px 14px;
@@ -397,18 +384,15 @@
       <a href="detalhamento.html" class="on">Detalhamento</a>
     </nav>
 
-    <!-- ===== HEADER ===== -->
     <header>
       <h1>Ushuaia</h1>
       <span class="icons">🇦🇷 🐧</span>
     </header>
     <p class="trip-meta">20 – 30 nov 2026 · <b>11 dias</b> · <b>9 noites</b> · 2 pessoas · Buenos Aires → El Calafate → Ushuaia</p>
 
-    <!-- ===== DIA A DIA ===== -->
     <div class="sec-title">Dia a dia</div>
     <p class="sec-note">Passagem única multi-city (Aerolíneas Argentinas/Gol), cotação real do Google Flights — sujeita a mudança até a compra. A volta é direta, com conexão em Buenos Aires (sem pernoite lá). Valores médios para o casal (2 pessoas), referência junho/2026. O custo de cada cidade soma passeios + alimentação + transporte local (esses dois rateados por dia). Hotéis saem nos pontos, e a passagem entra só no total geral por ligar as cidades.</p>
 
-    <!-- ===== BUENOS AIRES (IDA) ===== -->
     <div class="leg ba">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>Buenos Aires</div>
@@ -432,7 +416,6 @@
       </div>
     </div>
 
-    <!-- ===== EL CALAFATE ===== -->
     <div class="leg">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>El Calafate</div>
@@ -492,7 +475,6 @@
       </div>
     </div>
 
-    <!-- ===== USHUAIA ===== -->
     <div class="leg ush">
       <div class="leg-head">
         <div class="city"><span class="dot"></span>Ushuaia</div>
@@ -554,7 +536,6 @@
       </div>
     </div>
 
-    <!-- ===== ESTIMATIVA DE GASTOS ===== -->
     <div class="sec-title">Estimativa de gastos</div>
 
     <div class="cost-card">

@@ -46,7 +46,6 @@
     }
     .wrap { max-width: 880px; margin: 0 auto; }
 
-    /* ===== NAV ===== */
     .ver-switch {
       display: flex; gap: 3px; padding: 3px;
       background: var(--paper-2);
@@ -64,7 +63,6 @@
     .ver-switch a:hover { color: var(--ink); }
     .ver-switch a.on { background: var(--ink); color: var(--paper-2); }
 
-    /* ===== HEADER ===== */
     header {
       display: flex; align-items: center; gap: 10px;
       margin-bottom: 22px;
@@ -75,7 +73,6 @@
     }
     header .icons { font-size: clamp(16px, 3vw, 20px); letter-spacing: 2px; }
 
-    /* ===== LAYOUT ===== */
     .main {
       display: grid;
       grid-template-columns: 1fr 250px;
@@ -83,7 +80,6 @@
       align-items: start;
     }
 
-    /* ===== CALENDAR ===== */
     .cal-title {
       font-size: 12px; font-weight: 700; letter-spacing: .12em;
       text-transform: uppercase; color: var(--ink-3);
@@ -123,7 +119,6 @@
     .cell.cal .d { color: var(--teal); }
     .cell.ush .d { color: var(--amber); }
 
-    /* dias de transição: metade de cada cor */
     .cell.ba-cal  { background: linear-gradient(135deg, var(--ba-bg) 50%, var(--teal-bg) 50%); border-color: var(--line-2); }
     .cell.cal-ush { background: linear-gradient(135deg, var(--teal-bg) 50%, var(--amber-bg) 50%); border-color: var(--line-2); }
     .cell.ush-ba  { background: linear-gradient(135deg, var(--amber-bg) 50%, var(--ba-bg) 50%); border-color: var(--line-2); }
@@ -139,7 +134,6 @@
     .cell .fl .rt { display: block; }
     .cell .fl .tm { display: block; font-weight: 600; color: var(--ink-3); }
 
-    /* ===== LEGEND ===== */
     .legend {
       display: flex; flex-wrap: wrap; gap: 8px 20px;
       margin-top: 14px;
@@ -163,11 +157,6 @@
       margin-top: 10px; line-height: 1.5;
     }
 
-    /* ===== SIDEBAR: COSTS ===== */
-    /* .costs é a grid real; .cols/.row/.total só agrupam semanticamente
-       (display:contents) — assim as 3 colunas se alinham e se
-       dimensionam pelo conteúdo mais largo em TODAS as linhas juntas,
-       em vez de larguras fixas por linha que podem estourar. */
     .costs {
       display: grid;
       grid-template-columns: minmax(0,1fr) max-content max-content;
@@ -236,7 +225,6 @@
     footer a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--line); }
     footer a:hover { border-color: var(--ink); }
 
-    /* ===== MOBILE ===== */
     @media (max-width: 720px) {
       .main { grid-template-columns: 1fr; gap: 24px; }
       .costs { border-top: 1px solid var(--line); padding-top: 20px; }
@@ -273,7 +261,6 @@
 
     <div class="main">
 
-      <!-- ===== CALENDAR ===== -->
       <div class="cal-wrap">
         <div class="cal-title">Novembro 2026</div>
         <div class="calendar">
@@ -330,7 +317,6 @@
         <p class="cal-foot">Horários e preço de uma cotação real (Google Flights, multi-city) — ainda não comprada, sujeita a mudança. A volta (29 → 30) é uma conexão de ~5h em Buenos Aires, pousando em GRU às 9:10 da manhã do dia 30.</p>
       </div>
 
-      <!-- ===== COSTS ===== -->
       <aside class="costs">
         <div class="lbl">Gastos</div>
         <div class="cols"><span></span><span>Casal</span><span>Pessoa</span></div>
