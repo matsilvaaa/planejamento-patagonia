@@ -75,8 +75,8 @@
 
     .main {
       display: grid;
-      grid-template-columns: 1fr 250px;
-      gap: 28px;
+      grid-template-columns: 1fr;
+      gap: 24px;
       align-items: start;
     }
 
@@ -161,6 +161,8 @@
       display: grid;
       grid-template-columns: minmax(0,1fr) max-content max-content;
       column-gap: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
     }
     .costs .lbl {
       grid-column: 1 / -1;
@@ -225,10 +227,6 @@
     footer a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--line); }
     footer a:hover { border-color: var(--ink); }
 
-    @media (max-width: 720px) {
-      .main { grid-template-columns: 1fr; gap: 24px; }
-      .costs { border-top: 1px solid var(--line); padding-top: 20px; }
-    }
     @media (max-width: 480px) {
       .calendar { gap: 3px; }
       .cell { min-height: 50px; padding: 5px 5px; border-radius: 7px; }
